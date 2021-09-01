@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>User Management</h2>
+		<h:form>
+		
+			<h:commandLink value="Add New Instructor" action="#{user.add}" /> <br/>
+			<h:outputText value="Firstname: " /> <h:inputText value="#{user.firstname}" /> <br/>
+			<h:outputText value="Lastname: " /> <h:inputText  value="#{user.lastname}" /> <br/>
+			<h:outputText value="Username: " /> <h:inputText  value="#{user.username}" /> <br/>
+			<h:outputText value="Password: " /> <h:inputText  value="#{user.password}" /> <br/>
+		
+			<br/> <br/>
+			
+			<h:commandButton value="Submit Changes" onclick="submit()" />
+		
+		
+			<h:dataTable value="#{user.listTuples}"  width="100%" var="tuple"  styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="User ID"/>
+					</f:facet>
+					<h:outputText value="#{tuple.userID}" />
+				</h:column>
+		
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Firstname"/>
+					</f:facet>
+					<h:inputText value="#{tuple.firstname}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Lastname"/>
+					</f:facet>
+					<h:inputText value="#{tuple.lastname}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Username"/>
+					</f:facet>
+					<h:inputText value="#{tuple.fuser.username}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Password"/>
+					</f:facet>
+					<h:inputText value="#{tuple.fuser.password}" />
+				</h:column>
+				
+
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>

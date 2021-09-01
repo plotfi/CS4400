@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Edit Question</h2>
+		<h:form>
+		
+			<h:commandButton value="Submit Changes" onclick="submit()" /> <br/> <br/>
+		
+			<h:outputText value="Question:" /> <br/>
+			<h:inputTextarea value="#{editquestion.question}" />
+			<br/>
+			<h:outputText value="Correct Answer: " /> <br/>
+			<h:inputTextarea rendered="#{editquestion.ismultiq}"  value="#{editquestion.answer}" />
+			<h:selectOneRadio  rendered="#{!editquestion.ismultiq}"  value="#{editquestion.answer}">
+				  <f:selectItem itemLabel="True" itemValue="1" />
+				  <f:selectItem itemLabel="False" itemValue="0" />
+			</h:selectOneRadio>
+			
+			
+			<br/>
+			<br/>
+			
+			<h:outputText rendered="#{editquestion.ismultiq}"  value="Wrong Answers: "/> <br/>
+			
+			<h:dataTable rendered="#{editquestion.ismultiq}" value="#{editquestion.wrongAnswers}"  width="100%" var="tuple">	
+				<h:column>
+					<h:inputTextarea value="#{tuple.wrongtext}" />
+				</h:column>
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>

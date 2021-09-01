@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+
+<faces-config>
+
+    <navigation-rule> 
+   		<from-view-id>/admin_login.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>loginsuccess</from-outcome>
+   			<to-view-id>/adminmain.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>loginfailure</from-outcome>
+   			<to-view-id>/loginfail.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+   	
+   	<navigation-rule> 
+   		<from-view-id>/adminmain.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>passwd</from-outcome>
+   			<to-view-id>/instructor_passwd.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>user</from-outcome>
+   			<to-view-id>/users.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>exit</from-outcome>
+   			<to-view-id>/start.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+   	
+   	<navigation-rule> 
+   		<from-view-id>/instructor_login.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>loginsuccess</from-outcome>
+   			<to-view-id>/instructormain.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>loginfailure</from-outcome>
+   			<to-view-id>/loginfail.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+
+   	<navigation-rule> 
+   		<from-view-id>/instructormain.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>viewtopics</from-outcome>
+   			<to-view-id>/topic.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>viewcourse</from-outcome>
+   			<to-view-id>/course.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>passwd</from-outcome>
+   			<to-view-id>/instructor_passwd.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>exit</from-outcome>
+   			<to-view-id>/start.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+
+   	<navigation-rule> 
+   		<from-view-id>/instructor_passwd.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>back</from-outcome>
+   			<to-view-id>/start.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+
+
+    <navigation-rule> 
+   		<from-view-id>/course.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>viewtest</from-outcome>
+   			<to-view-id>/test.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+   	
+   	<navigation-rule> 
+   		<from-view-id>/test.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>viewsections</from-outcome>
+   			<to-view-id>/section.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+        <navigation-case>
+   			<from-outcome>printtest</from-outcome>
+   			<to-view-id>/print_test.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case> 	
+   		<navigation-case>
+   			<from-outcome>report</from-outcome>
+   			<to-view-id>/report.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case> 		
+   	</navigation-rule>
+
+   	<navigation-rule> 
+   		<from-view-id>/section.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>addquestiontosection</from-outcome>
+   			<to-view-id>/add_question_to_section.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+
+ 
+
+    <navigation-rule> 
+   		<from-view-id>/topic.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>qotopic</from-outcome>
+   			<to-view-id>/question_by_topic.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>allquestions</from-outcome>
+   			<to-view-id>/question.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+   	
+   	<navigation-rule> 
+   		<from-view-id>/question_by_topic.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>addmultiq</from-outcome>
+   			<to-view-id>/add_multichoice_question.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>addtfq</from-outcome>
+   			<to-view-id>/add_truefalse_question.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>allquestions</from-outcome>
+   			<to-view-id>/question.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>editquestion</from-outcome>
+   			<to-view-id>/edit_question.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   		<navigation-case>
+   			<from-outcome>searchquestion</from-outcome>
+   			<to-view-id>/search_question.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+   	
+   	<navigation-rule> 
+   		<from-view-id>/add_multichoice_question.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>goback</from-outcome>
+   			<to-view-id>/question_by_topic.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+   	
+    <navigation-rule> 
+   		<from-view-id>/add_truefalse_question.xhtml</from-view-id>
+   		<navigation-case>
+   			<from-outcome>goback</from-outcome>
+   			<to-view-id>/question_by_topic.xhtml</to-view-id>
+   			<redirect/>
+   		</navigation-case>
+   	</navigation-rule>
+
+   <application>
+      <locale-config>
+      	<default-locale>en</default-locale>
+      </locale-config>
+      <view-handler>
+      	com.sun.facelets.FaceletViewHandler
+      </view-handler> 
+   </application>
+
+   <managed-bean>
+      <managed-bean-name>course</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.CourseBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean> 
+   
+   <managed-bean>
+      <managed-bean-name>user</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.UserBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean> 
+   
+   <managed-bean>
+      <managed-bean-name>topic</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.TopicBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>test</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.TestBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+    <managed-bean>
+      <managed-bean-name>section</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.SectionBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>addqtosection</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.AddQuestionsToSectionBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>question</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.QuestionBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>qbtopic</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.QuestionByTopicBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>addmultiq</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.AddMultiQuestionBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+      
+   <managed-bean>
+      <managed-bean-name>addtfq</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.AddTFQuestionBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>navigationcontrol</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.NavigationBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>editquestion</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.EditQuestionBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>searchquestion</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.SearchQuestionBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+  <managed-bean>
+      <managed-bean-name>printtest</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.PrintTestBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>adminlogin</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.AdminLoginBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>instructorlogin</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.InstructorLoginBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>instructormain</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.InstructorMainBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>instructorpasswd</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.InstructorPasswdBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+   <managed-bean>
+      <managed-bean-name>report</managed-bean-name>
+      <managed-bean-class>edu.gatech.cs4400.bean.ReportBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+   
+</faces-config>

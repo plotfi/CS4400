@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Packaging Generator" default="_packaging_generation_">
+<target name="_packaging_generation_" depends="N65540"/>
+<target name="N65540" description="cs4400.war">
+<jar destfile="cs4400.war" manifest="META-INF/MANIFEST.MF">
+<zipfileset dir="WEB-INF" prefix="WEB-INF">
+<include name="web.xml"/>
+</zipfileset>
+<zipfileset dir="WEB-INF" prefix="WEB-INF">
+<include name="faces-config.xml"/>
+</zipfileset>
+<zipfileset dir="WEB-INF/classes" prefix="WEB-INF/classes">
+<include name="hibernate.cfg.xml"/>
+</zipfileset>
+<zipfileset dir="WEB-INF/classes" prefix="WEB-INF/classes">
+<include name="orm.xml"/>
+</zipfileset>
+<zipfileset dir=".">
+<include name="index.html"/>
+</zipfileset>
+<zipfileset dir="WEB-INF" prefix="WEB-INF" includes="**/*.class"/>
+<zipfileset dir="WEB-INF/lib" prefix="WEB-INF/lib" includes="**/*.jar"/>
+<zipfileset dir="" includes="**/*.png"/>
+<zipfileset dir="" includes="**/*.xhtml"/>
+<zipfileset dir="WEB-INF" prefix="WEB-INF" includes="**/*.properties"/>
+<zipfileset dir="" includes="**/*.css"/>
+</jar>
+</target>
+</project>

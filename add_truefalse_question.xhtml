@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Add New True/False Question</h2>
+		<h:form>
+		
+			<h:commandButton value="OK" action="#{addtfq.add}"/> <br/>
+		
+			<h:outputText value="Question:" /> <br/>
+			<h:inputTextarea value="#{addtfq.question}" />
+			<br/>
+			<h:outputText value="Correct Answer: " /> <br/>
+			
+			<h:selectOneRadio value="#{addtfq.answer}">
+				  <f:selectItem itemLabel="True" itemValue="1" />
+				  <f:selectItem itemLabel="False" itemValue="0" />
+			</h:selectOneRadio>
+			
+			<br/>
+			<br/>
+
+		</h:form>
+	</body>
+</html>

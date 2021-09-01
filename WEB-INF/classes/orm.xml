@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+	
+	
+	<class
+		name="edu.gatech.cs4400.bo.Instructor"
+		table="instructor">
+		
+		<id 
+			name="userID"
+			column="userID">
+			<generator class="foreign">
+				<param name="property">fuser</param>
+			</generator>
+		</id>	
+		
+		
+		<property
+			name="firstname"
+			column="firstname"/>
+		
+		<property
+			name="lastname"
+			column="lastname"/>
+			
+		<one-to-one
+			name="fuser"
+			class="edu.gatech.cs4400.bo.User"
+			constrained="true"/>
+
+	 </class> 
+	
+	<class
+		name="edu.gatech.cs4400.bo.Admin"
+		table="admin">
+		
+		<id 
+			name="userID"
+			column="userID">
+			<generator class="foreign">
+				<param name="property">fuser</param>
+			</generator>
+		</id>	
+			
+		<one-to-one
+			name="fuser"
+			class="edu.gatech.cs4400.bo.User"
+			constrained="true"/>
+
+	 </class> 
+	
+	<class
+		name="edu.gatech.cs4400.bo.Course"
+		table="course">
+		
+		<id 
+			name="courseID"
+			column="courseID">
+			<generator class="increment"/>
+		</id>
+		
+		<property
+			name="section"
+			column="section"/>		
+			
+		<property
+			name="year"
+			column="year"/>
+		
+		<property
+			name="courseNumber"
+			column="coursenum"/>
+		
+		<property
+			name="semester"
+			column="semester"/>
+			
+		<property
+			name="title"
+			column="title"/>
+			
+		<many-to-one
+			name="instructor"
+			class="edu.gatech.cs4400.bo.Instructor"
+			column="instructorID"/>		
+
+	 </class>
+	 
+	 <class
+		name="edu.gatech.cs4400.bo.User"
+		table="user">
+		
+		<id 
+			name="id"
+			column="id">
+			<generator class="increment"/>
+		</id>
+		
+		<property
+			name="username"
+			column="username"/>		
+			
+		<property
+			name="password"
+			column="password"/>
+		
+	 </class>
+	 
+	 <class
+		name="edu.gatech.cs4400.bo.Topic"
+		table="topic">
+		
+		<id 
+			name="id"
+			column="topicID">
+			<generator class="increment"/>
+		</id>
+		
+		<property
+			name="name"
+			column="name"/>		
+			
+	 </class>
+	 
+	<class
+		name="edu.gatech.cs4400.bo.Test"
+		table="test">
+		<id 
+			name="testID"
+			column="testID">
+			<generator class="increment"/>
+		</id>
+		
+		<many-to-one
+			name="course"
+			class="edu.gatech.cs4400.bo.Course"
+			column="f_courseID"/>		
+			
+		<property
+			name="title"
+			column="title"/>
+	 </class> 
+	
+	<class
+		name="edu.gatech.cs4400.bo.Section"
+		table="section">
+		<id 
+			name="sectionID"
+			column="sectionID">
+			<generator class="increment"/>
+		</id>
+		
+		<property
+			name="scoreperQ"
+			column="scoreperQ"/>		
+			
+		<property
+			name="title"
+			column="title"/>
+			
+		<many-to-one
+			name="test"
+			class="edu.gatech.cs4400.bo.Test"
+			column="f_testID"/>			
+	 </class> 
+
+	<class
+		name="edu.gatech.cs4400.bo.QuestionSectionJoin"
+		table="questionSectionJoin">
+		<id 
+			name="sqjID"
+			column="sqjID">
+			<generator class="increment"/>
+		</id>
+			
+		<many-to-one
+			name="section"
+			class="edu.gatech.cs4400.bo.Section"
+			column="f_section_ID"/>			
+			
+		<many-to-one
+			name="question"
+			class="edu.gatech.cs4400.bo.Question"
+			column="f_question_ID"/>		
+	 </class> 
+
+
+	 <class
+		name="edu.gatech.cs4400.bo.Question"
+		table="question">
+		<id 
+			name="questionID"
+			column="questionID">
+			<generator class="increment"/>
+		</id>	
+			
+		<property
+			name="Qtext"
+			column="Qtext"/>
+			
+		<many-to-one
+			name="ftopic"
+			class="edu.gatech.cs4400.bo.Topic"
+			column="f_topicID"/>		
+
+	 </class> 		
+	 
+	 
+	 <class
+		name="edu.gatech.cs4400.bo.MCQuestion"
+		table="multichoiceQ">
+		
+		<id 
+			name="id"
+			column="f_questionID">
+			<generator class="foreign">
+				<param name="property">fquestion</param>
+			</generator>
+		</id>	
+		
+		
+		<property
+			name="answer"
+			column="answer"/>
+			
+		<one-to-one
+			name="fquestion"
+			class="edu.gatech.cs4400.bo.Question"
+			constrained="true"/>
+
+	 </class> 
+	 
+	 
+	 <class
+		name="edu.gatech.cs4400.bo.TFQuestion"
+		table="truefalseQ">
+		
+		<id 
+			name="id"
+			column="f_questionID">
+			<generator class="foreign">
+				<param name="property">fquestion</param>
+			</generator>
+		</id>	
+		
+		<property
+			name="answer"
+			column="answer"/>
+			
+		<one-to-one
+			name="fquestion"
+			class="edu.gatech.cs4400.bo.Question"
+			constrained="true"/>
+
+	 </class> 
+	 
+	 <class
+		name="edu.gatech.cs4400.bo.WrongAnswer"
+		table="wronganswer">
+		<id 
+			name="id"
+			column="ID">
+			<generator class="increment"/>
+		</id>	
+			
+		<property
+			name="wrongtext"
+			column="AnswerText"/>
+			
+		<many-to-one
+			name="fmcq"
+			class="edu.gatech.cs4400.bo.MCQuestion"
+			column="mcq_ID"/>		
+
+	 </class> 
+
+</hibernate-mapping>
+		

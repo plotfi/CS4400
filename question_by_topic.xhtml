@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Questions</h2>
+		<h:form>
+		
+
+					
+			<h:commandLink actionListener="#{addmultiq.topic_listener}" value="Add Multiple Choice Question" action="#{navigationcontrol.addMultiQuestion}">
+				<f:param name="topicid" value="#{qbtopic.topicid}" />
+			</h:commandLink>
+			
+			<br/> <br/>
+			
+			<h:commandLink actionListener="#{addtfq.topic_listener}" value="Add True/False Question" action="#{navigationcontrol.addTFQuestion}">
+				<f:param name="topicid" value="#{qbtopic.topicid}" />
+			</h:commandLink>
+		    
+		    <br/> <br/>
+		    
+		    <h:commandButton value="Show All Questions" action="#{navigationcontrol.allquestions}" />
+		    <h:commandButton value="Search Questions" action="#{navigationcontrol.searchQuestion}" />
+		
+			<h:commandButton value="Submit" onclick="submit()" />
+		    
+		
+			<h:dataTable value="#{qbtopic.questionsByTopic}"  width="100%" var="tuple" styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">	
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Question Id"/>
+					</f:facet>
+					<h:outputText value="#{tuple.questionID}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Question Text"/>
+					</f:facet>
+					<h:inputText value="#{tuple.qtext}" styleClass="textfield" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Edit Question"/>
+					</f:facet>
+					<h:commandLink actionListener="#{editquestion.question_listener}" value="Edit #{tuple.questionID}" action="#{navigationcontrol.editquestion}">
+						<f:param name="questionid" value="#{tuple.questionID}" />
+					</h:commandLink>
+				</h:column>
+				
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>

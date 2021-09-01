@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Search Questions</h2>
+		<h:form>
+		
+			<h:commandButton value="OK" onclick="submit()"/> <br/>
+
+			<h:outputText value="Keyword: " /> <br/>
+			<h:inputText value="#{searchquestion.keyword}" /> <br/>
+			<h:outputText value="QuestionID: " /> <br/>
+			<h:inputText value="#{searchquestion.questionid}" /> <br/>
+			<br/>
+			
+
+			<h:outputText value="Type: " /> <br/>
+			<h:selectOneRadio value="#{searchquestion.questionType}">
+				  <f:selectItem itemLabel="True/False" itemValue="tf" />
+				  <f:selectItem itemLabel="Multiple Choice" itemValue="mult" />
+				  <f:selectItem itemLabel="Both" itemValue="both" />
+			</h:selectOneRadio>
+			
+			<h:dataTable value="#{searchquestion.searchResults}"  width="100%" var="tuple" styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">					
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Question ID"/>
+					</f:facet>
+					<h:outputText value="#{tuple.questionID}" styleClass="textfield"  />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Question Text"/>
+					</f:facet>
+					<h:outputText value="#{tuple.qtext}" styleClass="textfield"  />
+				</h:column>
+			
+			</h:dataTable>
+			
+			<br/>
+			<br/>
+
+		</h:form>
+	</body>
+</html>

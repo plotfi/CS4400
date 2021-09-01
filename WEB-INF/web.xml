@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
+version="2.4">
+	<!-- Use Documents Saved as *.xhtml -->  
+  
+	<listener>
+		<listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml</param-value>
+		<description>
+			Comma separated list of URIs of (additional) faces config files.
+			(e.g. /WEB-INF/my-config.xml)
+			See JSF 1.0 PRD2, 10.3.2
+		</description>
+	</context-param>
+	
+	<context-param>
+	    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+		<description>
+			State saving method: "client" or "server" (= default)
+			See JSF Specification 2.5.2
+		</description>
+	</context-param> 
+	
+       
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+  
+	<!-- Special Debug Output for Development -->
+	<context-param>
+		<param-name>facelets.DEVELOPMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+          
+	<!-- Optional JSF-RI Parameters to Help Debug -->
+	<context-param>
+		<param-name>com.sun.faces.validateXml</param-name>
+		<param-value>true</param-value>
+	</context-param>
+		
+	<context-param>
+		<param-name>com.sun.faces.verifyObjects</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	  
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>      
+	
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>  
+	
+	<security-constraint>
+   		<display-name>constraints for all facelets</display-name>
+   		<web-resource-collection>
+   			<web-resource-name>protected all facelets</web-resource-name>
+   			<url-pattern>*.xhtml</url-pattern>   			
+   		</web-resource-collection>
+   		<auth-constraint>
+   			<description>No roles so no direct access</description>
+   		</auth-constraint>
+    </security-constraint>
+</web-app>
+

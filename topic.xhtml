@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Topic Information</h2>
+		<h:form>
+		
+			<h:commandButton value="Insert" onclick="submit()" action="#{topic.add}"/>	<br/> <br/>
+			<h:outputText value="Topic Name: " /> <h:inputText value="#{topic.name}"/> 
+			
+			
+			<br/>
+			<br/>
+			<h:commandButton value="Submit Changes" onclick="submit()" />
+			<h:commandButton value="Show All Questions" action="#{navigationcontrol.allquestions}" />
+		
+			<h:dataTable value="#{topic.listTuples}"  width="100%" var="tuple" styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Topic Name"/>
+					</f:facet>
+					
+					<h:commandLink actionListener="#{qbtopic.topic_filter_listener}" value="#{tuple.name} Questions" action="#{navigationcontrol.questionsOfTopic}">
+						<f:param name="topicIdFilter" value="#{tuple.id}" />
+					</h:commandLink>
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Topic Id"/>
+					</f:facet>
+					<h:outputText value="#{tuple.id}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Topic Name"/>
+					</f:facet>
+					<h:inputText value="#{tuple.name}" styleClass="textfield"  />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Total"/>
+					</f:facet>
+					<h:outputText value="#{tuple.total}" />
+				</h:column>
+				
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>

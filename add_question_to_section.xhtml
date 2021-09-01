@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2> Add Questions to Section</h2>
+		<h:form>
+		
+			<h:commandButton value="Add" action="#{addqtosection.add}"/> <br/><br/>
+			<h:outputText value="Question ID: " /> <h:inputText value="#{addqtosection.questionid}" />
+			
+			
+			<h:dataTable value="#{addqtosection.allQuestionsForSection}"  width="100%" var="tuple" styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Question"/>
+					</f:facet>
+					<h:outputText value="#{tuple.question.qtext}" styleClass="textfield" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Remove Question"/>
+					</f:facet>
+					<h:commandLink actionListener="#{addqtosection.question_remove_listener}" value="Remove #{tuple.question.questionID}" >
+						<f:param name="questionid" value="#{tuple.question.questionID}" />
+					</h:commandLink>
+				</h:column>	
+				
+			</h:dataTable>
+
+<br/>
+<br/>
+
+			<h:commandButton value="OK" onclick="submit()"/> <br/>
+
+			<h:outputText value="Keyword: " /> <br/>
+			<h:inputText value="#{searchquestion.keyword}" /> <br/>
+			<h:outputText value="QuestionID: " /> <br/>
+			<h:inputText value="#{searchquestion.questionid}" /> <br/>
+			<br/>
+			
+
+			<h:outputText value="Type: " /> <br/>
+			<h:selectOneRadio value="#{searchquestion.questionType}">
+				  <f:selectItem itemLabel="True/False" itemValue="tf" />
+				  <f:selectItem itemLabel="Multiple Choice" itemValue="mult" />
+				  <f:selectItem itemLabel="Both" itemValue="both" />
+			</h:selectOneRadio>
+			
+			<h:dataTable value="#{searchquestion.searchResults}"  width="100%" var="tuple" styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">					
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Add Question"/>
+					</f:facet>
+					<h:commandLink actionListener="#{addqtosection.question_listener}" value="#{tuple.questionID}" action="#{addqtosection.add}">
+						<f:param name="questionid" value="#{tuple.questionID}" />
+					</h:commandLink>
+				</h:column>	
+				
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Question Text"/>
+					</f:facet>
+					<h:outputText value="#{tuple.qtext}" styleClass="textfield"  />
+				</h:column>
+			
+			</h:dataTable>
+
+
+		</h:form>
+	</body>
+</html>

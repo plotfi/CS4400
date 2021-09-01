@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Admin Login</h2>
+			<h:form>
+			
+				<h:commandLink actionListener="#{instructormain.instructor_listener}" value="Login" action="#{adminlogin.tryLogin}">
+					<f:param name="instructorid" value="#{adminlogin.adminid}" /> <br/>
+				</h:commandLink> <br/>
+				
+				<h:commandLink value="Clear" action="#{adminlogin.clear_login}" /> <br/><br/>
+				
+				<h:outputText value="Username: " /> <h:inputText value="#{adminlogin.username}" /> <br/>
+				<h:outputText value="Password: " /> <h:inputText value="#{adminlogin.password}" /> <br/>
+				
+			</h:form>
+	</body>
+</html>

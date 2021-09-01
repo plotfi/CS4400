@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Change Password</h2>
+			<h:form>
+				
+				<h:commandLink value="Change Password" action="#{instructorpasswd.changePassword}" /> <br/>
+				<h:outputText value="Old Password: " /> <h:inputText value="#{instructorpasswd.oldpassword}" /> <br/>
+				<h:outputText value="New Password: " /> <h:inputText value="#{instructorpasswd.newpassword1}" /> <br/>
+				<h:outputText value="New Password (again): " /> <h:inputText value="#{instructorpasswd.newpassword2}" />
+				
+			</h:form>
+	</body>
+</html>

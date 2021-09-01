@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Sections</h2>
+		<h:form>
+		
+			<h:commandButton value="Create" action="#{section.add}"/> <br/><br/>
+			
+			
+			<h:outputText value="Section Name:" />  <h:inputText value="#{section.title}" /> <br/>
+			<h:outputText value="Score Per Question:" />  <h:inputText value="#{section.scoreperQ}" /> <br/>
+			 
+			<br/>
+			<br/>
+			<h:commandButton value="Submit Changes" onclick="submit()" />
+			
+			
+			<h:dataTable value="#{section.sectionByTest}"  width="100%" var="tuple" styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">
+			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Add Questions"/>
+					</f:facet>
+					<h:commandLink actionListener="#{addqtosection.section_listener}" value="Add Questions to Section #{tuple.title}" action="#{navigationcontrol.addQuestionsToSection}">
+						<f:param name="sectionid" value="#{tuple.sectionID}" />
+					</h:commandLink>
+				</h:column>	
+			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Section ID"/>
+					</f:facet>
+					<h:outputText value="Section #{tuple.sectionID}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Section Name"/>
+					</f:facet>
+					<h:inputText value="#{tuple.title}" styleClass="textfield"  />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Score Per Question"/>
+					</f:facet>
+					<h:inputText value="#{tuple.scoreperQ}" />
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Remove Section"/>
+					</f:facet>
+					<h:commandLink actionListener="#{section.section_listener}" value="Remove" >
+						<f:param name="sectionid" value="#{tuple.sectionID}" />
+					</h:commandLink>
+				</h:column>	
+				
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>

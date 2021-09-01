@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2> Tests </h2>
+		<h:form>
+			
+			
+			<h:commandButton value="Create" action="#{test.add}"/> <br/><br/>
+			
+			
+			<h:outputText value="Test Title:" /> <h:inputText value="#{test.title}" />
+			
+			<br/>
+			
+			<br/>
+			<h:commandButton value="Submit Changes" onclick="submit()" />
+			
+			<h:dataTable value="#{test.testByCourse}"  width="100%" var="tuple" styleClass="orders" headerClass="orderHeader" rowClasses="evenColumn,oddColumn">
+			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="View Test Sections"/>
+					</f:facet>
+					<h:commandLink actionListener="#{section.test_listener}" value="View Sections for #{tuple.title}" action="#{navigationcontrol.viewSection}">
+						<f:param name="testid" value="#{tuple.testID}" />
+					</h:commandLink>
+				</h:column>	
+			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Test id"/>
+					</f:facet>
+					<h:outputText value="#{tuple.testID}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Title"/>
+					</f:facet>
+					<h:inputText value="#{tuple.title}" styleClass="textfield"  />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Print Test"/>
+					</f:facet>
+					<h:commandLink actionListener="#{printtest.test_listener}" value="Print #{tuple.title}" action="#{navigationcontrol.printtest}">
+						<f:param name="testid" value="#{tuple.testID}" />
+					</h:commandLink>
+				</h:column>	
+				
+				
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Add New Multiple Choice Question</h2>
+		<h:form>
+		
+			<h:commandButton value="OK" action="#{addmultiq.add}"/> <br/>
+			<h:commandButton value="Add Wrong Answer" action="#{addmultiq.addWrongAnswer}"/> <br/>
+			<h:commandButton value="Drop Last Wrong Answer" action="#{addmultiq.dropWrongAnswer}"/> <br/>
+		
+			<h:outputText value="Question:" /> <br/>
+			<h:inputTextarea value="#{addmultiq.question}" />
+			<br/>
+			<h:outputText value="Correct Answer: " /> <br/>
+			<h:inputTextarea value="#{addmultiq.answer}" />
+			
+			<br/>
+			<br/>
+			
+			<h:outputText value="Wrong Answers: "/> <br/>
+			
+			<h:dataTable value="#{addmultiq.wrongAnswers}"  width="100%" var="tuple">	
+				<h:column>
+					<h:inputTextarea value="#{tuple.wrapped}" />
+				</h:column>
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>

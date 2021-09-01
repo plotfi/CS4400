@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<style type="text/css" title="currentstyle"> @import "cs4400.css";</style>
+		<title>CS4400</title>
+	</head>
+	<body>
+		<h2>Test Report</h2>
+		<h:form>
+				
+			<h:dataTable value="#{report.report}"  width="100%" var="tuple" >	
+			
+				<h:column>
+					<h:outputText value="#{tuple.wrapped}" />
+				</h:column>
+							
+			</h:dataTable>
+
+		</h:form>
+	</body>
+</html>
